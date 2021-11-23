@@ -30,7 +30,10 @@ app.get('/', function (req, res) {
 app.post('/api/fileanalyse', upload.single('upfile'), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
-  res.status(200).redirect('../');
+  let response = { "name": req.file.filename, "type": req.file.mimetype, "size": req.file.size };
+
+  res.status(200).json(response);
+
 });
 
 
